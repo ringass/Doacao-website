@@ -1,15 +1,22 @@
+
 import Navbar from "../NavBar"
 import GlobalStyles from "../../assets/global"
+import Theme from '../../assets/themes/default';
 import { Container } from "./styles"
-import HomePage from "../Home"
+import { ThemeProvider } from 'styled-components';
+import SobreNos from "../AboutUs"
+import HomePage from "../Home";
 function App() {
   return (
     <>
+    <ThemeProvider theme={Theme}>
     <GlobalStyles />
       <Container>
         <Navbar/>
-        <HomePage/>
+        <SobreNos/>
+        {/*<HomePage/>*/}
       </Container>
+     </ThemeProvider>
     </>
   )
 }

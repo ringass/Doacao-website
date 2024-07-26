@@ -2,7 +2,7 @@ export default {
   bgColor: '#FFFFFF',
   primColor: '#AD5E5E',
   secColor: '#E2C09B',
-
+  terColor: '#9A9A9A',
   // spacing
   margin_xs: ".236em",
   margin_s: ".272em",
@@ -18,3 +18,4 @@ export default {
   // devices
   deviceMobile: "650px",
 }
+

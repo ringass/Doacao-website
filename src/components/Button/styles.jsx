@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
-  background-color: #A85858;  
-  color: white; 
-  border: none;  
+  background-color: ${props => props.theme.primColor};
+  border: 2px solid ${props => props.theme.primColor};
+  color: ${props => props.theme.primColor};
   border-radius: 50px;  
   padding: 12px 24px;  
   font-size: 16px; 
