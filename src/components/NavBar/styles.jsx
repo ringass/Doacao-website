@@ -27,5 +27,8 @@ export const LinkItems = styled.div`
 export const NavLink = styled(Link)`
   cursor: pointer;
   font-family: 'Plus Jakarta Sans';
+
+
+  
 `;
 
