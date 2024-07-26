@@ -44,13 +44,14 @@ export const Container = styled.div`
   align-items: center;
   gap: 75px;
   width: 100%;
-  height: 350px;
+  height: 400px;
   margin-top: 60px;
+
 `;
 
 export const Card = styled.div`
-  width: 330px;
-  height: 320px;
+  width: 350px;
+  height: 340px;
   background-color: ${props => props.color || props.theme.primColor};
   border-radius: 15%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 32px;
@@ -77,3 +78,23 @@ export const Icon = styled.img`
   position: absolute;
   top:40px;
 `
+
+export const CardTtitle = styled.h1`
+  font-size: 25px;
+  position: absolute;
+  color: ${props => props.meiorio ? 'white' : props.theme.primColor};
+  top:105px;
+  font-family: ${props => props.theme.fontJak};
+
+  .meiorio{
+    color: white;
+  }
+`;
+
+export const InformCard = styled.span`
+  font-size: 18px;
+  width: 256px;
+  margin-top:33px;
+  text-align: center;
+  color: ${props => props.theme.terColor};
+`;
