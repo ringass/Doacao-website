@@ -6,6 +6,7 @@ import { Container } from "./styles"
 import { ThemeProvider } from 'styled-components';
 import SobreNos from "../AboutUs"
 import HomePage from "../Home";
+import Donation from "../Donation";
 function App() {
   return (
     <>
@@ -13,8 +14,9 @@ function App() {
     <GlobalStyles />
       <Container>
         <Navbar/>
-        <SobreNos/>
         {/*<HomePage/>*/}
+        {/*<SobreNos/>*/}
+        <Donation/>
       </Container>
      </ThemeProvider>
     </>

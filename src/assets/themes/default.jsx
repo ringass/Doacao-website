@@ -14,6 +14,7 @@ export default {
   // fonts
   fontJak: "Plus Jakarta Sans",
   fontBow: "Bowlby One Sc",
+  fontOp: "Open Sans",
 
   // devices
   deviceMobile: "650px",
