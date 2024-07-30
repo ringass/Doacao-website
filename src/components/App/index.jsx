@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import SobreNos from "../AboutUs"
 import HomePage from "../Home";
 import Donation from "../Donation";
+import Footer from "../Footer";
 function App() {
   return (
     <>
@@ -16,7 +17,8 @@ function App() {
         <Navbar/>
         {/*<HomePage/>*/}
         {/*<SobreNos/>*/}
-        <Donation/>
+        {/*<Donation/>*/}
+        <Footer/>
       </Container>
      </ThemeProvider>
     </>
