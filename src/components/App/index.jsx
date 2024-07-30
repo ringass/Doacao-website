@@ -16,7 +16,7 @@ function App() {
       <Container>
         <Navbar/>
         {/*<HomePage/>*/}
-        {/*<SobreNos/>*/}
+        <SobreNos/>
         {/*<Donation/>*/}
         <Footer/>
       </Container>

@@ -5,6 +5,7 @@ export const All = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 80px;
 `;
 
 export const Textos = styled.div`
@@ -45,7 +46,7 @@ export const Container = styled.div`
   gap: 75px;
   width: 100%;
   height: 400px;
-  margin-top: 60px;
+  margin-top: 50px;
 
 `;
 

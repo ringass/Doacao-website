@@ -3,11 +3,13 @@ import CustomButton from '../Button/'
 
 export const All = styled.div`
   width: 100%;
+  
 `;
 
 export const Container = styled.div`
   width: 100%;
   margin-top: 70px;
+  margin-bottom: 80px;
   height: 550px;
   display: flex;
   justify-content: space-between;
@@ -25,7 +27,6 @@ export const ImagemDireita = styled.div`
 `;
 
 export const ConteudoEsquerda = styled.div`
-
   width: 800px;
   margin-left: 40px;
   height: 400px;
@@ -38,6 +39,7 @@ export const ConteudoEsquerda = styled.div`
     margin-top: 83px;
     align-self: flex-start;
     margin-left: 21px;
+    color: white;
   }
 `;
 

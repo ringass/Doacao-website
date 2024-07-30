@@ -2,51 +2,64 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: #693438;
-  bottom: 0;
+ 
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 32px;
+  bottom: 0 !important;
   width: 100vw;
-  height: 160px;
-  position: absolute;
+  height: 140px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 80px;
 `;
 
 export const CenterLogo = styled.div`
-  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
+  height: 140px;
+
+
+  img{
+    width: 140px;
+  }
 `;
 
-export const Texto = styled.span`
-  color: white;
-  font-family: ${props => props.theme.fontJak};
-  top: 5px;
-  position: absolute;
-  font-weight: bold;
-  font-size: 17px;
-`
-
 export const Socials = styled.div`
-  background-color: green;
-  height: 160px;
+  flex: 0.8;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
+  height:60%;
+  gap: 1rem;
+  flex-direction: column;
+  color: white;
+  text-align: flex-start;
+  font-family: ${props => props.theme.fontJak};
+
+  h3{
+  font-size: 1.3rem;
+  font-weight: 800;
+  }
 `;
 
 export const Etec = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  flex: 1;
+  flex: 0.8;
+  height: 140px;
+
+  img{
+    width: 150px;
+  }
 `;
 
 export const Icons = styled.div`
-  background-color: tomato;
-  height: 40%;
-  width: 50px;
-`
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+`;
