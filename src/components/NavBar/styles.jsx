@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+import { NavLink as RouterNavLink } from 'react-router-dom';
 
 export const Nav = styled.nav`
   display: flex;
@@ -24,13 +24,30 @@ export const LinkItems = styled.div`
   gap: 60px;
 `;
 
-export const NavLink = styled(Link)`
+export const NavLink = styled(RouterNavLink)`
   cursor: pointer;
   font-family: 'Plus Jakarta Sans';
   text-decoration: none;
   color: black;
+  position: relative;
+
+  &.active {
+    color: #D4A373; 
+    font-weight: bold;
+  }
+
+  &.active::after {
+    content: '•';
+    color: #D4A373; 
+    position: absolute;
+    bottom: -15px; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px; 
+    
+  }
 
   &:hover {
-    color: gray;
+    color: #b8b6b6;
   }
 `;

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { LinkItems, Nav, NavLink, LogoImage } from './styles.jsx';
 import Logo from '../../assets/images/NAVLOGO.svg';
 
@@ -9,14 +8,14 @@ function Navbar() {
         <img src={Logo} alt="logorio" />
       </LogoImage>
       <LinkItems>
-        <NavLink as={Link} to="/">
-          Início
+        <NavLink to="/" end>
+          Home
         </NavLink>
-        <NavLink as={Link} to="/about">
-          Sobre nós
+        <NavLink to="/about">
+          About
         </NavLink>
-        <NavLink as={Link} to="/donation">
-          Doações
+        <NavLink to="/donation">
+          Donation
         </NavLink>
       </LinkItems>
     </Nav>
