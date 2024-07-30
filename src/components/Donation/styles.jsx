@@ -5,6 +5,7 @@ export const All = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 50px;
 `;
 
 export const Textos = styled.div`

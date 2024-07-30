@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import { LinkItems, Nav, NavLink, LogoImage } from './styles.jsx';
 import Logo from '../../assets/images/NAVLOGO.svg';
+
 function Navbar() {
   return (
     <Nav>
@@ -7,13 +9,13 @@ function Navbar() {
         <img src={Logo} alt="logorio" />
       </LogoImage>
       <LinkItems>
-        <NavLink to="group" smooth={true} spy={true} offset={-70} duration={500}>
+        <NavLink as={Link} to="/">
           Início
         </NavLink>
-        <NavLink to="group" smooth={true} spy={true} offset={-70} duration={500}>
+        <NavLink as={Link} to="/about">
           Sobre nós
         </NavLink>
-        <NavLink to="group" smooth={true} spy={true} offset={-70} duration={500}>
+        <NavLink as={Link} to="/donation">
           Doações
         </NavLink>
       </LinkItems>

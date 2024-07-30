@@ -1,14 +1,14 @@
-import styled from "styled-components"
-import { Link } from 'react-scroll';
+import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 export const Nav = styled.nav`
-display: flex;
-justify-content: space-between;
-align-items: center;
-height: 85px;
-top: 0;
-padding: 20px 20px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 85px;
+  top: 0;
+  padding: 20px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 export const LogoImage = styled.div`
@@ -27,8 +27,10 @@ export const LinkItems = styled.div`
 export const NavLink = styled(Link)`
   cursor: pointer;
   font-family: 'Plus Jakarta Sans';
+  text-decoration: none;
+  color: black;
 
-
-  
+  &:hover {
+    color: gray;
+  }
 `;
-
