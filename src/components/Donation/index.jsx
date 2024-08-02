@@ -2,7 +2,6 @@ import { All, Container, Inform, Textos, Titlemini, TitleminiWrapper, Titulo, } 
 
 
 function Donation() {
-
   return(
     <>
     <All>

@@ -8,6 +8,8 @@ import SobreNos from "../AboutUs";
 import HomePage from "../Home";
 import Donation from "../Donation";
 import Footer from "../Footer";
+import Indique from '../Indique';
+import Voluntario from '../Voluntario';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<SobreNos />} />
             <Route path="/donation" element={<Donation />} />
+            <Route path="/indique" element={<Indique/>}/>
+            <Route path="/voluntario" element={<Voluntario/>}/>
           </Routes>
           <Footer />
         </Container>
