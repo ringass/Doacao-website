@@ -6,7 +6,7 @@ export const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 32px;
   bottom: 0 !important;
   width: 100vw;
-  height: 140px;
+  height: 160px;
   position: relative;
   display: flex;
   align-items: center;

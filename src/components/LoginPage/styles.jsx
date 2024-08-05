@@ -1,11 +1,8 @@
-import styled from "styled-components";
+import styled, { Styled } from "styled-components";
+
 
 export const All = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 50px;
+    width: 100%;
 `;
 
 export const Textos = styled.div`
@@ -17,7 +14,6 @@ export const Textos = styled.div`
   align-items: center;
   text-align: center;
 `;
-
 
 export const Titulo = styled.h1`
   font-size: 36px;
@@ -36,25 +32,11 @@ export const Inform = styled.span`
   color: ${props => props.theme.terColor};
 `;
 
+
 export const Container = styled.div`
-  width: 959px;
-  height: 1000px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 32px;
-  border-radius: 30px;
-  margin-top: 30px;
+
 `;
 
-export const TitleminiWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 30px;
+export const ConfirmButton = styled.div`
+
 `;
-
-export const Titlemini = styled.span`
-  font-family: ${props => props.theme.fontOp};
-  font-size: 26px;
-  color: ${props => props.theme.primColor};
-  font-weight: bold;
-`
-

@@ -8,8 +8,7 @@ export const All = styled.div`
   margin-bottom: 80px;
 `;
 
-export const Textos = styled.div`
-
+export const Textos = styled.div`s
   width: 700px;
   display: flex;
   height: 130px;
