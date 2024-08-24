@@ -36,6 +36,12 @@ export const ContainerEsquerda = styled.div`
     margin-top: 19px;
     margin-left: 10px;
     border-radius: 10%;
+    background-color: black;
+    border-color: black;
+    
+    &:hover {
+    background-color: #414040;  
+  }
   }
 
 `;
@@ -49,10 +55,14 @@ export const InputContainer = styled.div`
 
 export const ContainerDireita = styled.div`
   width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   img {
-    width: 400px;
-    height: auto;
-    margin-left: 220px;
+    width: 600px;
+    margin-bottom: 140px;
+    border-radius: 100%;
+    border: 5px solid white;
   }
 `;
 
@@ -72,7 +82,7 @@ export const Texto = styled.span`
   text-align: left;
   align-self: flex-start;
   margin-top: 25px;
-  color: white;
+  color: ${props => props.theme.terColor};
   width: 85%;
   font-size: 20px;
   margin-left: 9px;

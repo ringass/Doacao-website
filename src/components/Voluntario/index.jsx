@@ -1,6 +1,6 @@
 import { Bloco, All, ContainerEsquerda, ContainerDireita, EmailInput, Titulo, Texto, InputContainer} from "./styles";
 import ret from "../../assets/images/retangulo.svg"
-import Homem from "../../assets/images/entrega.svg"
+import ursinho from "../../assets/images/ursin.png"
 import StyledButton from '../Button';
 function Voluntario(){
 
@@ -19,7 +19,7 @@ function Voluntario(){
           </InputContainer>
         </ContainerEsquerda>
         <ContainerDireita>
-        <img src={Homem}></img>
+        <img src={ursinho}></img>
         </ContainerDireita>
       </Bloco>
       </All>
