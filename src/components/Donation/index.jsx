@@ -1,8 +1,64 @@
 import { All, Container, Inform, Textos, Titlemini, TitleminiWrapper, Titulo, FormRow, FormColumn, FieldGroup, FieldLabel, SectionTitle, SectionWrapper, ConsentGroup } from "./styles";
 import SInput from "../Input";
 import StyledButton from "../Button";
+import { useState } from 'react';
 
 function Donation() {
+
+  const [formData, setFormData] = useState({
+    nomeCompleto: '',
+    email: '',
+    telefone: '',
+    endereco: '',
+    cpf: '',
+    rg: '',
+    tipoRoupa: '',
+    quantidade: '',
+    condicao: '',
+    tamanho: '',
+    dataDoacao: '',
+    comentarios: '',
+    preferenciaContato: '',
+    consentimentoComunicacao: false,
+    consentimentoDados: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value,
+    });
+  };
+
+  const handleSubmit = async () => {
+    try {
+
+      const dataToSend = {
+        ...formData,
+        quantidade: parseInt(formData.quantidade, 10) || 0,
+      };
+
+      const response = await fetch('http://localhost:8080/donation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSend),
+      });
+      if (!response.ok) {
+        throw new Error('Erro ao enviar dados');
+      }
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error('Erro:', error);
+    }
+  };
+  
+  
+  
+
   return (
     <>
       <All>
@@ -14,21 +70,32 @@ function Donation() {
           <TitleminiWrapper>
             <Titlemini>Preencha com seus dados</Titlemini>
           </TitleminiWrapper>
+
           {/* Section: Dados Pessoais */}
           <SectionWrapper>
             <SectionTitle>Dados Pessoais</SectionTitle>
             <FormRow>
-              {/* Nome Completo and E-mail */}
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>Nome Completo</FieldLabel>
-                  <SInput placeholder="Digite seu nome completo" />
+                  <SInput
+                    name="nomeCompleto"
+                    value={formData.nomeCompleto}
+                    onChange={handleChange}
+                    placeholder="Digite seu nome completo"
+                  />
                 </FieldGroup>
               </FormColumn>
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>E-mail</FieldLabel>
-                  <SInput type="email" placeholder="Digite seu e-mail" />
+                  <SInput
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Digite seu e-mail"
+                  />
                 </FieldGroup>
               </FormColumn>
             </FormRow>
@@ -37,29 +104,49 @@ function Donation() {
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>Telefone (opcional)</FieldLabel>
-                  <SInput type="tel" placeholder="Digite seu telefone" />
+                  <SInput
+                    name="telefone"
+                    type="tel"
+                    value={formData.telefone}
+                    onChange={handleChange}
+                    placeholder="Digite seu telefone"
+                  />
                 </FieldGroup>
               </FormColumn>
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>Endereço (opcional)</FieldLabel>
-                  <SInput placeholder="Digite seu endereço" />
+                  <SInput
+                    name="endereco"
+                    value={formData.endereco}
+                    onChange={handleChange}
+                    placeholder="Digite seu endereço"
+                  />
                 </FieldGroup>
               </FormColumn>
             </FormRow>
 
             <FormRow>
-              {/* CPF and RG */}
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>CPF</FieldLabel>
-                  <SInput placeholder="Digite seu CPF" />
+                  <SInput
+                    name="cpf"
+                    value={formData.cpf}
+                    onChange={handleChange}
+                    placeholder="Digite seu CPF"
+                  />
                 </FieldGroup>
               </FormColumn>
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>RG</FieldLabel>
-                  <SInput placeholder="Digite seu RG" />
+                  <SInput
+                    name="rg"
+                    value={formData.rg}
+                    onChange={handleChange}
+                    placeholder="Digite seu RG"
+                  />
                 </FieldGroup>
               </FormColumn>
             </FormRow>
@@ -69,59 +156,91 @@ function Donation() {
           <SectionWrapper>
             <SectionTitle>Dados de Doação</SectionTitle>
             <FormRow>
-              {/* Tipo de Roupa and Quantidade */}
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>Tipo de Roupa</FieldLabel>
-                  <SInput placeholder="Descreva o item doado" />
+                  <SInput
+                    name="tipoRoupa"
+                    value={formData.tipoRoupa}
+                    onChange={handleChange}
+                    placeholder="Descreva o item doado"
+                  />
                 </FieldGroup>
               </FormColumn>
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>Quantidade</FieldLabel>
-                  <SInput type="number" placeholder="Número de peças doadas" />
+                  <SInput
+                    name="quantidade"
+                    type="number"
+                    value={formData.quantidade}
+                    onChange={handleChange}
+                    placeholder="Número de peças doadas"
+                  />
                 </FieldGroup>
               </FormColumn>
             </FormRow>
 
             <FormRow>
-              {/* Condição and Tamanho */}
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>Condição</FieldLabel>
-                  <SInput placeholder="Estado das roupas (novas, usadas, etc.)" />
+                  <SInput
+                    name="condicao"
+                    value={formData.condicao}
+                    onChange={handleChange}
+                    placeholder="Estado das roupas (novas, usadas, etc.)"
+                  />
                 </FieldGroup>
               </FormColumn>
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>Tamanho</FieldLabel>
-                  <SInput placeholder="Tamanho das roupas" />
+                  <SInput
+                    name="tamanho"
+                    value={formData.tamanho}
+                    onChange={handleChange}
+                    placeholder="Tamanho das roupas"
+                  />
                 </FieldGroup>
               </FormColumn>
             </FormRow>
 
             <FormRow>
-              {/* Data da Doação */}
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>Data da Doação</FieldLabel>
-                  <SInput type="date" />
+                  <SInput
+                    name="dataDoacao"
+                    type="date"
+                    value={formData.dataDoacao}
+                    onChange={handleChange}
+                  />
                 </FieldGroup>
               </FormColumn>
             </FormRow>
 
-            {/* Preferences and Comments */}
             <FormRow>
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>Comentários ou Observações</FieldLabel>
-                  <SInput placeholder="Deixe seu comentário ou observação" />
+                  <SInput
+                    name="comentarios"
+                    value={formData.comentarios}
+                    onChange={handleChange}
+                    placeholder="Deixe seu comentário ou observação"
+                  />
                 </FieldGroup>
               </FormColumn>
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>Preferências de Contato (opcional)</FieldLabel>
-                  <SInput placeholder="Como prefere ser contatado?" />
+                  <SInput
+                    name="preferenciaContato"
+                    value={formData.preferenciaContato}
+                    onChange={handleChange}
+                    placeholder="Como prefere ser contatado?"
+                  />
                 </FieldGroup>
               </FormColumn>
             </FormRow>
@@ -130,15 +249,25 @@ function Donation() {
           {/* Consent and Confirmation */}
           <ConsentGroup>
             <label>
-              <input type="checkbox" /> Consentimento para Receber Comunicação
+              <input
+                type="checkbox"
+                name="consentimentoComunicacao"
+                checked={formData.consentimentoComunicacao}
+                onChange={handleChange}
+              /> Consentimento para Receber Comunicação
             </label>
             <label>
-              <input type="checkbox" /> Consentimento para Compartilhamento de Dados
+              <input
+                type="checkbox"
+                name="consentimentoDados"
+                checked={formData.consentimentoDados}
+                onChange={handleChange}
+              /> Consentimento para Compartilhamento de Dados
             </label>
           </ConsentGroup>
 
           {/* Submit Button */}
-          <StyledButton>ENVIAR</StyledButton>
+          <StyledButton onClick={handleSubmit}>ENVIAR</StyledButton>
         </Container>
       </All>
     </>
