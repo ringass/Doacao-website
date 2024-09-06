@@ -1,7 +1,8 @@
-import { All, Container, Inform, Textos, Titlemini, TitleminiWrapper, Titulo, FormRow, FormColumn, FieldGroup, FieldLabel, SectionTitle, SectionWrapper, ConsentGroup } from "./styles";
+import { All, Container, Inform, Textos, Titlemini, TitleminiWrapper, Titulo, FormRow, FormColumn, FieldGroup, FieldLabel, SectionTitle, SectionWrapper, ConsentGroup, SelectionBox } from "./styles";
 import SInput from "../Input";
 import StyledButton from "../Button";
 import { useState } from 'react';
+import InputMask from 'react-input-mask';
 
 function Donation() {
 
@@ -31,11 +32,16 @@ function Donation() {
     });
   };
 
-  const handleSubmit = async () => {
-    try {
 
+  const handleSubmit = async () => {
+    
+
+    try {
       const dataToSend = {
         ...formData,
+        cpf: formData.cpf.replace(/\D/g, ''),        
+        rg: formData.rg.replace(/\D/g, ''),    
+        telefone: formData.telefone.replace(/\D/g, ''),
         quantidade: parseInt(formData.quantidade, 10) || 0,
       };
 
@@ -51,13 +57,29 @@ function Donation() {
       }
       const result = await response.json();
       console.log(result);
+
+      setFormData({
+        nomeCompleto: '',
+        email: '',
+        telefone: '',
+        endereco: '',
+        cpf: '',
+        rg: '',
+        tipoRoupa: '',
+        quantidade: '',
+        condicao: '',
+        tamanho: '',
+        dataDoacao: '',
+        comentarios: '',
+        preferenciaContato: '',
+        consentimentoComunicacao: false,
+        consentimentoDados: false,
+      });
+
     } catch (error) {
       console.error('Erro:', error);
     }
   };
-  
-  
-  
 
   return (
     <>
@@ -104,13 +126,17 @@ function Donation() {
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>Telefone (opcional)</FieldLabel>
-                  <SInput
+
+                  <InputMask
                     name="telefone"
+                    mask="(99) 99999-9999"
                     type="tel"
                     value={formData.telefone}
-                    onChange={handleChange}
+                    onChange={(e) => handleChange({ target: { name: 'telefone', value: e.target.value } })}
                     placeholder="Digite seu telefone"
-                  />
+                  >
+                    {(inputProps) => <SInput {...inputProps} placeholder="(00) 00000-0000" type="text" />}
+                  </InputMask>
                 </FieldGroup>
               </FormColumn>
               <FormColumn>
@@ -130,23 +156,25 @@ function Donation() {
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>CPF</FieldLabel>
-                  <SInput
-                    name="cpf"
+                  <InputMask
+                    mask="999.999.999-99" 
                     value={formData.cpf}
-                    onChange={handleChange}
-                    placeholder="Digite seu CPF"
-                  />
+                    onChange={(e) => handleChange({ target: { name: 'cpf', value: e.target.value } })}
+                  >
+                    {(inputProps) => <SInput {...inputProps} placeholder="000.000.000-00" type="text" />}
+                  </InputMask>
                 </FieldGroup>
               </FormColumn>
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>RG</FieldLabel>
-                  <SInput
-                    name="rg"
+                  <InputMask
+                    mask="99.999.999-9"
                     value={formData.rg}
-                    onChange={handleChange}
-                    placeholder="Digite seu RG"
-                  />
+                    onChange={(e) => handleChange({ target: { name: 'rg', value: e.target.value } })}
+                  >
+                    {(inputProps) => <SInput {...inputProps} placeholder="00.000.000-0" type="text" />}
+                  </InputMask>
                 </FieldGroup>
               </FormColumn>
             </FormRow>
@@ -185,23 +213,35 @@ function Donation() {
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>Condição</FieldLabel>
-                  <SInput
-                    name="condicao"
+                  <SelectionBox name="condicao"
                     value={formData.condicao}
                     onChange={handleChange}
-                    placeholder="Estado das roupas (novas, usadas, etc.)"
-                  />
+                    >
+                     <option disabled selected hidden value="">Estado das roupas</option>
+                    <option value="Diversas condições">Diversas condições</option>
+                    <option value="Novas">Novas</option>
+                    <option value="Usadas">Usadas</option>
+                    <option value="Seminovas">Seminovas</option>
+                    <option value="Usadas Desgastadas">Usadas Desgastadas</option>
+                    <option value="Usadas rasgadas">Usadas rasgadas</option>
+                  </SelectionBox>
                 </FieldGroup>
               </FormColumn>
               <FormColumn>
                 <FieldGroup>
                   <FieldLabel>Tamanho</FieldLabel>
-                  <SInput
-                    name="tamanho"
-                    value={formData.tamanho}
-                    onChange={handleChange}
-                    placeholder="Tamanho das roupas"
-                  />
+                  <SelectionBox name="tamanho" value={formData.tamanho} onChange={handleChange} placeholder="Selecione um tamanho">
+                    <option disabled selected hidden value="">Selecione um tamanho</option>
+                    <option value="Diversos Tamanhos">Diversos Tamanhos</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                    <option value="14">14</option>
+                    <option value="16">16</option>
+                    <option value="P">P</option>
+                    <option value="M">M</option>
+                    <option value="G">G</option>
+                    <option value="GG">GG</option>
+                  </SelectionBox>
                 </FieldGroup>
               </FormColumn>
             </FormRow>

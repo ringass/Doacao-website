@@ -82,6 +82,34 @@ export const SectionTitle = styled.h2`
   text-align: left;
 `;
 
+export const SelectionBox = styled.select`
+  width: 280px;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 8px;
+  border: 1px solid white;
+  font-size: 16px;
+  font-family: 'Plus Jakarta Sans';
+  text-align: center;
+  color: white;
+  background-color: #8B4A4A;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="white" d="M7 7l3 3 3-3"/></svg>');
+  background-repeat: no-repeat;
+  background-position: calc(100% - 15px) center;
+  background-size: 20px; /* Ajuste o tamanho da seta conforme necessário */
+  appearance: none;
+
+  &:focus {
+    outline: none;
+    border-color: #8B4A4A;
+  }
+
+  option:hover {
+    font-family: 'Plus Jakarta Sans';
+  }
+`;
+
+
 export const FormRow = styled.div`
   width: 100%;
   display: flex;

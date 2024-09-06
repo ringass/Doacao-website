@@ -12,7 +12,7 @@ function Voluntario(){
           <Titulo>SEJA UM VOLUNTÁRIO</Titulo> 
           <Texto>Para ser um voluntário do projeto Corações Solidários é necessario que voce nos envie um email para que possamos entrar em contato com voce. No email deve conter CPF, NOME COMPLETO e cidade onde reside.</Texto>
           <InputContainer>
-          <EmailInput placeholder="Escreva seu email" />
+          
           <StyledButton>
             ENVIAR
           </StyledButton>

@@ -34,10 +34,12 @@ export const ContainerEsquerda = styled.div`
   ${CustomButton}{
     color: #ffff;
     margin-top: 19px;
-    margin-left: 10px;
+    margin-left: auto;
+    margin-right: 50%;
     border-radius: 10%;
     background-color: black;
     border-color: black;
+
     
     &:hover {
     background-color: #414040;  
