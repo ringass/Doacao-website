@@ -31,6 +31,12 @@ export const ContainerEsquerda = styled.div`
   align-items: flex-start;
   text-align: center;
 
+  a{
+    width: 100%;
+    height: 100%;
+    margin-left: 100px;
+  }
+
   ${CustomButton}{
     color: #ffff;
     margin-top: 19px;

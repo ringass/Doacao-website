@@ -96,7 +96,7 @@ export const SelectionBox = styled.select`
   background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="white" d="M7 7l3 3 3-3"/></svg>');
   background-repeat: no-repeat;
   background-position: calc(100% - 15px) center;
-  background-size: 20px; /* Ajuste o tamanho da seta conforme necessário */
+  background-size: 20px; 
   appearance: none;
 
   &:focus {
