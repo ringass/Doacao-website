@@ -1,0 +1,27 @@
+datasource db {
+  provider = "mysql" 
+  url = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Donation {
+  id            Int      @id @default(autoincrement())
+  fullName       String
+  email          String
+  phone          String
+  address        String
+  cpf            String
+  rg             String
+  clothingType   String?
+  quantity       Int
+  condition      String
+  size           String?
+  donationDate   DateTime
+  comments       String?
+  contactPref    String?
+  consentCommunication Boolean
+  consentDataSharing Boolean
+}
