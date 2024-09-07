@@ -32,19 +32,79 @@ function Donation() {
     });
   };
 
-
+  function isValidCPF(cpf) {
+    cpf = cpf.replace(/\D/g, ''); 
+    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+  
+    let soma = 0;
+    let resto;
+  
+    for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    resto = (soma * 10) % 11;
+  
+    if ((resto === 10) || (resto === 11)) resto = 0;
+    if (resto !== parseInt(cpf.substring(9, 10))) return false;
+  
+    soma = 0;
+    for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    resto = (soma * 10) % 11;
+  
+    if ((resto === 10) || (resto === 11)) resto = 0;
+    if (resto !== parseInt(cpf.substring(10, 11))) return false;
+  
+    return true;
+  }
+  
+  function isValidRG(rg) {
+    rg = rg.replace(/\D/g, ''); 
+    return rg.length >= 7 && rg.length <= 9; 
+  }
+  
+  function isValidPhone(phone) {
+    const phonePattern = /^\(\d{2}\) \d{5}-\d{4}$/; 
+    return phonePattern.test(phone);
+  }
+  
   const handleSubmit = async () => {
-    
 
+  const { nomeCompleto, email, cpf, rg, quantidade, dataDoacao, consentimentoComunicacao, consentimentoDados, condicao, endereco, telefone } = formData;
+  
+
+  if (!nomeCompleto || !email || !cpf || !rg || !dataDoacao || !quantidade || !consentimentoComunicacao || !consentimentoDados || !condicao || !endereco || !telefone  ) {
+    alert("Por favor, preencha todos os campos obrigatórios.");
+    return;
+  }
+
+    
+    if (!isValidCPF(cpf)) {
+      alert("CPF inválido");
+      return;
+    }
+  
+    if (!isValidRG(rg)) {
+      alert("RG inválido");
+      return;
+    }
+  
+    if (!isValidPhone(telefone)) {
+      alert("Telefone inválido");
+      return;
+    }
+
+    if(parseInt(quantidade, 10) === 0){
+      alert("Doe no minimo uma peça");
+      return;
+    }
+  
     try {
       const dataToSend = {
         ...formData,
-        cpf: formData.cpf.replace(/\D/g, ''),        
-        rg: formData.rg.replace(/\D/g, ''),    
+        cpf: formData.cpf.replace(/\D/g, ''),
+        rg: formData.rg.replace(/\D/g, ''),
         telefone: formData.telefone.replace(/\D/g, ''),
         quantidade: parseInt(formData.quantidade, 10) || 0,
       };
-
+  
       const response = await fetch('http://localhost:8080/donation', {
         method: 'POST',
         headers: {
@@ -57,7 +117,7 @@ function Donation() {
       }
       const result = await response.json();
       console.log(result);
-
+  
       setFormData({
         nomeCompleto: '',
         email: '',
@@ -75,7 +135,7 @@ function Donation() {
         consentimentoComunicacao: false,
         consentimentoDados: false,
       });
-
+  
     } catch (error) {
       console.error('Erro:', error);
     }
@@ -201,6 +261,7 @@ function Donation() {
                   <SInput
                     name="quantidade"
                     type="number"
+                    min="0"
                     value={formData.quantidade}
                     onChange={handleChange}
                     placeholder="Número de peças doadas"
