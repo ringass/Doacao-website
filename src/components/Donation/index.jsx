@@ -74,7 +74,6 @@ function Donation() {
     alert("Por favor, preencha todos os campos obrigatórios.");
     return;
   }
-
     
     if (!isValidCPF(cpf)) {
       alert("CPF inválido");
@@ -95,7 +94,21 @@ function Donation() {
       alert("Doe no minimo uma peça");
       return;
     }
+
+    const today = new Date(); 
+    const selectedDate = new Date(dataDoacao); 
+    const currentYear = today.getFullYear(); 
   
+    if (selectedDate < today) {
+      alert("A data de doação não pode ser anterior ao dia atual.");
+      return;
+    }
+  
+    if (selectedDate.getFullYear() !== currentYear) {
+      alert(`A data de doação deve ser dentro do ano ${currentYear}.`);
+      return;
+    }
+
     try {
       const dataToSend = {
         ...formData,
